@@ -35,8 +35,6 @@ project/
 Visit http://localhost:5000 in your browser.
 ---
 
-Would you like me to generate a `requirements.txt` file as well, based on your app?
-
 
 
 

@@ -1,6 +1,6 @@
 # 🌍 Global Development Insights Chatbot
 
-A conversational AI chatbot that translates natural language questions into SQL queries and retrieves data from a MySQL database on global development indicators. Built using Flask, MySQL, and custom NLP logic.
+A conversational AI chatbot that translates natural language questions into SQL queries and retrieves data from a MySQL database of global development indicators. It is developed using Flask, MySQL, and proprietary NLP logic.
 
 ![Chatbot Preview](https://img.shields.io/badge/Flask-2.x-blue?logo=flask)
 ![License](https://img.shields.io/badge/license-MIT-green)

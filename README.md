@@ -31,7 +31,35 @@ project/
 - 🌐 Clean Web UI with Flask + HTML
 - ✅ Supports range filters, comparisons, top/bottom queries, and aggregations
 
+### ✅ Sample Queries
+Try the following:
+
+- "What was GDP of India in 2021?"
+- "Average life expectancy in Brazil from 2000 to 2020"
+- "Top 10 countries by HDI in 2018"
+- "Infant mortality above 50 in 2005"
+
+### 📊 Dataset Info
+This project uses a global development dataset that includes:
+
+HDI, PHI, GDP, GNI, Education & Health Metrics
+
+Cleaned, normalized, and loaded via MySQL
+
+📁 datacleaning.py and datatransformation.py scripts prepare your data.
+
+### 🔒 License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+🙌 Author
+Shubham P.
+3rd Year B.Tech (Data Science)
+📧 shubham30p@gmail.com
+
+### ⭐️ Star this repo if you find it useful!
 ---
+
+
 Visit http://localhost:5000 in your browser.
 ---
 

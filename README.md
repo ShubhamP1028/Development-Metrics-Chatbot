@@ -10,12 +10,19 @@ A conversational AI chatbot that translates natural language questions into SQL 
 
 ## 📂 Project Structure
 project/
+
 │
+
 ├── app.py
+
 ├── devmatric.py
+
 ├── datatransformation.py
+
 ├── cleaneddata.py
+
 ├── templates/
+
     └── index.html
 
 ## ✨ Features

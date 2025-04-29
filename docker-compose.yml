@@ -1,0 +1,12 @@
+version: '3.11'
+
+services:
+  chatbot:
+    build: .
+    container_name: devmetricschatbot
+    ports:
+      - "5050:5000"
+    restart: unless-stopped
+    environment:
+      - FLASK_ENV=development
+    command: python App.py

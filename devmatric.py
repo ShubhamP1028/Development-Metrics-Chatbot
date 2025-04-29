@@ -3,21 +3,20 @@
 import re
 import difflib
 
-# Metrics mapping (natural language to values inside 'metric' column)
 metrics = {
     "hdi": "hdi",  # Human Development Index
     "hdi rank difference": "rankdiff_hdi_phdi",
-    "phdi": "phdi",  # Planetary pressures-adjusted HDI
+    "phdi": "phdi",  # pressures-adjusted HDI
     "hdi-phdi difference": "diff_hdi_phdi",
     "mean years of schooling male": "mys_m",
     "mean years of schooling female": "mys_f",
-    "mean years of schooling": "mys",  # General mean years of schooling
+    "mean years of schooling": "mys",  # mean years of schooling
     "expected years of schooling male": "eys_m",
     "expected years of schooling female": "eys_f",
-    "expected years of schooling": "eys",  # General expected years of schooling
+    "expected years of schooling": "eys",  # expected years of schooling
     "life expectancy male": "le_m",
     "life expectancy female": "le_f",
-    "life expectancy": "le",  # General life expectancy
+    "life expectancy": "le",
     "gender inequality index": "gii",
     "gii rank": "gii_rank",
     "labour force participation male": "lfpr_m",
@@ -26,10 +25,10 @@ metrics = {
     "population ratio female": "pr_f",
     "school enrollment male": "se_m",
     "school enrollment female": "se_f",
-    "adolescent birth rate": "abr",  # Adolescent birth rate
-    "birth rate": "abr",  # Proxy for general birth rate
+    "adolescent birth rate": "abr",
+    "birth rate": "abr",  # other for general birth rate
     "maternal mortality rate": "mmr",
-    "infant mortality rate": "mmr",  # Proxy (imperfect, as mmr is maternal)
+    "infant mortality rate": "mmr", 
     "income inequality": "ineq_inc",
     "education inequality": "ineq_edu",
     "life expectancy inequality": "ineq_le",
@@ -40,14 +39,13 @@ metrics = {
     "gni per capita male": "gni_pc_m",
     "gni per capita female": "gni_pc_f",
     "gross national income per capita": "gnipc",
-    "gdp per capita": "gnipc",  # Proxy for GDP per capita
-    "gdp": "gnipc",  # Proxy for GDP (per capita as closest match)
+    "gdp per capita": "gnipc",  # other metric for GDP per capita
+    "gdp": "gnipc",  # another for GDP (per capita as closest match)
     "production": "_prod",
     "hdi male": "hdi_m",
     "hdi female": "hdi_f"
 }
 
-# Country aliases mapping (common variations to canonical names in country_list)
 country_aliases = {
     "usa": "United States",
     "uk": "United Kingdom",
@@ -136,8 +134,21 @@ def match_country(query):
 
 
 def match_metric(query):
-    matches = difflib.get_close_matches(query, list(metrics.keys()), n=1, cutoff=0.7)
-    return metrics[matches[0]] if matches else None
+    # Extract potential metric words from the query
+    query_words = query.lower().split()
+    
+    # Try to match exact keywords first
+    for word in query_words:
+        if word in metrics:
+            return metrics[word]
+    
+    # If no exact match, try fuzzy matching with individual words
+    for word in query_words:
+        matches = difflib.get_close_matches(word, list(metrics.keys()), n=1, cutoff=0.7)
+        if matches:
+            return metrics[matches[0]]
+    
+    return None
 
 
 def extract_info(query):

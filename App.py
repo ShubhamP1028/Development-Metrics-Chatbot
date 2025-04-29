@@ -14,7 +14,7 @@ def run_query(sql):
             port=3306,
             user="root",
             password="",
-            database="metrics_db"
+            database="worldeco"
         )
         cursor = connection.cursor()
         cursor.execute(sql)
@@ -36,7 +36,10 @@ def index():
         query = request.form["query"]
         info = extract_info(query)
         sql = build_sql(info)
-        result = run_query(sql)
+        if sql.startswith("Sorry"):  # If it's an error message
+            result = sql, False  # Return the error message as result
+        else:
+            result = run_query(sql)  # Only run the SQL if it's a valid query
     return render_template("index.html", result=result, query=query, sql=sql)
 
 

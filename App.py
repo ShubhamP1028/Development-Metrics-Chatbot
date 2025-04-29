@@ -12,9 +12,9 @@ def run_query(sql):
         connection = mysql.connector.connect(
             host="localhost",
             port=3306,
-            user="root",  # Default username
-            password="",  # Empty password
-            database="metrics_db"  # Database name from setup
+            user="root",
+            password="",
+            database="metrics_db"
         )
         cursor = connection.cursor()
         cursor.execute(sql)
@@ -22,9 +22,9 @@ def run_query(sql):
         connection.commit()
         cursor.close()
         connection.close()
-        return results, True  # Return results and success flag
+        return results, True
     except Error as e:
-        return f"Error: {str(e)}", False  # Return error message and failure flag
+        return f"Error: {str(e)}", False
 
 
 @bot.route("/", methods=["GET", "POST"])
